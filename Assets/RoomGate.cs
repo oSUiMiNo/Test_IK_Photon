@@ -24,6 +24,11 @@ public class RoomGate : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        StartCoroutine(InitAvatar());
+    }
+
+    IEnumerator InitAvatar()
+    {
         GameObject Avatar = null;
         if (PhotonNetwork.IsMasterClient)
         {
@@ -32,6 +37,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("マスターではない");
+            yield return new WaitForSeconds(4);
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
         }
     }
