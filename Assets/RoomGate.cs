@@ -21,12 +21,18 @@ public class RoomGate : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions(), TypedLobby.Default);
     }
-  
 
     public override void OnJoinedRoom()
     {
-        GameObject Avatar = PhotonNetwork.Instantiate("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
-        GameObject.Find("IKMarker").transform.parent = Avatar.transform;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameObject Avatar = PhotonNetwork.Instantiate("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject.Find("IKMarker").transform.parent = Avatar.transform;
+        }
+        else 
+        {
+            
+        }
     }
 }
 
