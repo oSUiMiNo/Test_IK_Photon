@@ -38,7 +38,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         {
             Debug.Log("マスターではない");
             yield return new WaitForSeconds(4);
-            Avatar = GameObject.Find("Avatar");
+            Avatar = GameObject.Find("Avatar(Clone)");
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
         }
     }
@@ -52,7 +52,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
     GameObject LoadNetWorkObject(string name, Vector3 position, Quaternion rotation)
     {
         GameObject obj = PhotonNetwork.Instantiate(name, position, rotation);
-        obj.name = obj.name.Replace("(Clone)", "");
+        //obj.name = obj.name.Replace("(Clone)", "");
         return obj;
     }
 }
