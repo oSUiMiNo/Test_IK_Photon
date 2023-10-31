@@ -37,7 +37,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("マスターではない");
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(0);
             Avatar = GameObject.Find("Avatar(Clone)");
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
         }
