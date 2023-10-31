@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37562b39ff933b245ac2f35d87edbcd6, type: 3}
+  m_Name: BlendShape.Yandere
+  m_EditorClassIdentifier: 
+  m_prefab: {fileID: 0}
+  BlendShapeName: Yandere
+  Preset: 0
+  Values:
+  - RelativePath: 00Base_Face
+    Index: 9
+    Weight: 3.8
+  - RelativePath: 00Base_Face
+    Index: 18
+    Weight: 41.5
+  - RelativePath: 00Base_Face
+    Index: 29
+    Weight: 49.399998
+  - RelativePath: 00Base_Face
+    Index: 88
+    Weight: 6.6
+  - RelativePath: 00Base_Face
+    Index: 89
+    Weight: 100
+  - RelativePath: 00Base_Face
+    Index: 90
+    Weight: 100
+  - RelativePath: 00Base_Face
+    Index: 147
+    Weight: 100
+  - RelativePath: 00Base_Face
+    Index: 158
+    Weight: 100
+  MaterialValues: []
+  IsBinary: 1
