@@ -32,7 +32,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         GameObject Avatar = null;
         if (PhotonNetwork.IsMasterClient)
         {
-            Avatar = PhotonNetwork.Instantiate("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+            Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
         }
         else
         {
@@ -46,6 +46,14 @@ public class RoomGate : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("’N‚©“ü‚Á‚Ä‚«‚½");
+    }
+
+
+    GameObject LoadNetWorkObject(string name, Vector3 position, Quaternion rotation)
+    {
+        GameObject obj = PhotonNetwork.Instantiate(name, position, rotation);
+        obj.name = obj.name.Replace("(Clone)", "");
+        return obj;
     }
 }
 
