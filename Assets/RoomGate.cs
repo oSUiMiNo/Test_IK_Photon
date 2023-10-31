@@ -29,10 +29,15 @@ public class RoomGate : MonoBehaviourPunCallbacks
             GameObject Avatar = PhotonNetwork.Instantiate("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
         }
-        else 
+        else
         {
-            
+            Debug.Log("マスターではない");
         }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Debug.Log("誰か入ってきた");
     }
 }
 
