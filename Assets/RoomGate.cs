@@ -42,6 +42,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(4);
             Avatar = GameObject.Find("Avatar(Clone)");
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
+            Destroy(Avatar.GetComponent<MarkerController>());
         }
     }
 

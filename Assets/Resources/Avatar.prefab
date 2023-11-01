@@ -765,6 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4329853656286684160}
   - component: {fileID: 3808156700774591670}
+  - component: {fileID: 1215541903739593491}
   - component: {fileID: 6782960040080156851}
   - component: {fileID: 3282223131521527725}
   - component: {fileID: 8476717845091019163}
@@ -816,6 +817,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Animator: {fileID: 0}
   IKTarget: {fileID: 1161859643536254432}
+--- !u!114 &1215541903739593491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143960242168878297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e33d3dc49e1c2428f1855661676e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6782960040080156851
 MonoBehaviour:
   m_ObjectHideFlags: 0

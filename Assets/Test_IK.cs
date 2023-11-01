@@ -1,9 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class Test_IK : MonoBehaviour
+public class Test_IK : MonoBehaviourPunCallbacks
 {
     [SerializeField, Tooltip("IK用アニメーター")]
     private Animator p_Animator;
@@ -15,12 +16,7 @@ public class Test_IK : MonoBehaviour
     {
         // Animatorの参照を取得する
         p_Animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        IKTarget.transform.position = GameObject.Find("J_Bip_R_Hand").transform.position;
-        IKTarget.transform.rotation = GameObject.Find("J_Bip_R_Hand").transform.rotation;
+        IKTarget = GameObject.Find("IKMarker");
     }
 
     // IK更新時に呼ばれる関数
