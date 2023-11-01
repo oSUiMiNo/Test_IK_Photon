@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun.Demo.PunBasics;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using EVMC4U;
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
@@ -35,6 +36,10 @@ public class RoomGate : MonoBehaviourPunCallbacks
         {
             Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
             Destroy(Avatar.GetComponent<Test_IK>());
+            GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
+            Avatar.transform.parent = ExternalReceiver.transform;
+            ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
+
         }
         else
         {
