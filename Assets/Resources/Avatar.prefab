@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_Animator: {fileID: 0}
-  IKTarget: {fileID: 5033615029418776999}
+  IKTarget: {fileID: 1161859643536254432}
 --- !u!114 &6782960040080156851
 MonoBehaviour:
   m_ObjectHideFlags: 0
