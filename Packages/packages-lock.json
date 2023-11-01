@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "file:C:/Users/osuim/Downloads/UniTask-master/src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "2.0.5",
       "depth": 0,
