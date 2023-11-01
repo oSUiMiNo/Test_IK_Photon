@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using EVMC4U;
 using UnityEditor.Animations;
+using Cysharp.Threading.Tasks;
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
@@ -25,12 +26,14 @@ public class RoomGate : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions(), TypedLobby.Default);
     }
 
-    public override void OnJoinedRoom()
+
+
+    public override async void OnJoinedRoom()
     {
-        StartCoroutine(InitAvatar());
+        await InitAvatar();
     }
 
-    IEnumerator InitAvatar()
+    async UniTask InitAvatar()
     {
         GameObject Avatar = null;
         if (PhotonNetwork.IsMasterClient)
@@ -41,21 +44,28 @@ public class RoomGate : MonoBehaviourPunCallbacks
             GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
             Avatar.transform.parent = ExternalReceiver.transform;
             ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
-
         }
         else
         {
             Debug.Log("マスターではない");
-            yield return new WaitForSeconds(4);
+            await UniTask.Delay(TimeSpan.FromSeconds(4));
             Avatar = GameObject.Find("Avatar(Clone)");
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
             Destroy(Avatar.GetComponent<MarkerController>());
         }
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    [PunRPC]
+    private void Move(string GlobalIP)
+    {
+        Debug.Log($"IPはこれ {GlobalIP}");
+    }
+
+
+    public async override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("誰か入ってきた");
+        photonView.RPC(nameof(Move), RpcTarget.AllBuffered, await GetGlobalIP.UseAPI());
     }
 
 
