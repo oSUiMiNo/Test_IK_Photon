@@ -65,7 +65,9 @@ public class RoomGate : MonoBehaviourPunCallbacks
     public async override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("’N‚©“ü‚Á‚Ä‚«‚½");
-        photonView.RPC(nameof(Move), RpcTarget.AllBuffered, await GetGlobalIP.UseAPI());
+        string IP = await GetGlobalIP.UseAPI();
+        Debug.Log(IP);
+        //photonView.RPC(nameof(Move), RpcTarget.AllBuffered, IP);
     }
 
 
