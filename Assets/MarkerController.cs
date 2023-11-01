@@ -17,6 +17,6 @@ public class MarkerController : MonoBehaviour
     void Update()
     {
         IKTarget.transform.position = part.transform.position;
-        IKTarget.transform.rotation = part.transform.rotation;
+        //IKTarget.transform.rotation = part.transform.rotation;
     }
 }
