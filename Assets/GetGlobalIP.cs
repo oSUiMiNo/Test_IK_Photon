@@ -19,10 +19,12 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
 
     public static async UniTask<string> UseAPI()
     {
+        string responseText = "なし";
+
         using (UnityWebRequest request = new UnityWebRequest("https://ipinfo.io/ip", "GET"))
         {
             request.downloadHandler = new DownloadHandlerBuffer();
-
+            
             await UniTask.Delay(TimeSpan.FromSeconds(0.3));
 
             try
@@ -53,10 +55,11 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
             }
             else
             {
+                responseText = request.downloadHandler.text;
                 request.Dispose();
-                UnityEngine.Debug.Log($"IPアドレス分かった！　{request.downloadHandler.text}");
+                UnityEngine.Debug.Log($"IPアドレス分かった！　{responseText}");
             }
-            return request.downloadHandler.text;
+            return responseText;
         };
     }
 

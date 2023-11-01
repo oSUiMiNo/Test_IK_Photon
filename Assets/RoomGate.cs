@@ -67,7 +67,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         Debug.Log("’N‚©“ü‚Á‚Ä‚«‚½");
         string IP = await GetGlobalIP.UseAPI();
         Debug.Log(IP);
-        //photonView.RPC(nameof(Move), RpcTarget.AllBuffered, IP);
+        photonView.RPC(nameof(Move), RpcTarget.AllBuffered, IP);
     }
 
 
