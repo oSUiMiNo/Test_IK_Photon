@@ -52,7 +52,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
             Avatar = GameObject.Find("Avatar(Clone)");
             GameObject.Find("IKMarker").transform.parent = Avatar.transform;
             Destroy(Avatar.GetComponent<MarkerController>());
-            photonView.RPC(nameof(A), RpcTarget.AllBuffered);
         }
     }
 
@@ -61,21 +60,16 @@ public class RoomGate : MonoBehaviourPunCallbacks
 
     public async override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(4));
         Debug.Log("誰か入ってきた");
-        string IP = await GetGlobalIP.UseAPI();
-        Debug.Log(IP);
-        photonView.RPC(nameof(Move), RpcTarget.AllBuffered, "wwwwwwww");
+        await UniTask.Delay(TimeSpan.FromSeconds(4));
+        //string IP = await GetGlobalIP.UseAPI();
+        //Debug.Log(IP);
+        photonView.RPC(nameof(ShareIP), RpcTarget.AllBuffered, await GetGlobalIP.UseAPI());
     }
 
-    [PunRPC]
-    private void A()
-    {
-        Debug.Log($"わーーーーーーーーー");
-    }
 
     [PunRPC]
-    private void Move(string GlobalIP)
+    private void ShareIP(string GlobalIP)
     {
         Debug.Log($"IPはこれ {GlobalIP}");
     }
