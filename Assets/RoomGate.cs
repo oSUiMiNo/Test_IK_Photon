@@ -9,6 +9,7 @@ using System;
 using UnityEngine.SceneManagement;
 using Photon.Pun.Demo.PunBasics;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
@@ -33,6 +34,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(Avatar.GetComponent<Test_IK>());
         }
         else
         {
@@ -56,7 +58,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         return obj;
     }
 }
-
+    
 public enum PhotonStates
 {
     Default,
