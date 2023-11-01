@@ -55,19 +55,22 @@ public class RoomGate : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    private void Move(string GlobalIP)
-    {
-        Debug.Log($"IP‚Í‚±‚ê {GlobalIP}");
-    }
+    
 
 
     public async override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        await UniTask.Delay(TimeSpan.FromSeconds(4));
         Debug.Log("’N‚©“ü‚Á‚Ä‚«‚½");
         string IP = await GetGlobalIP.UseAPI();
         Debug.Log(IP);
         photonView.RPC(nameof(Move), RpcTarget.AllBuffered, IP);
+    }
+
+    [PunRPC]
+    private void Move(string GlobalIP)
+    {
+        Debug.Log($"IP‚Í‚±‚ê {GlobalIP}");
     }
 
 
