@@ -27,8 +27,8 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
         IPAddress[] adArray = Dns.GetHostAddresses(hostname);
         Dictionary<string, string> adDict = new Dictionary<string, string>();
 
-        adDict.Add("IP6", adArray[1].ToString());
-        adDict.Add("IP4", adArray[2].ToString());
+        adDict.Add("IP6", adArray[0].ToString());
+        adDict.Add("IP4", adArray[1].ToString());
         
         foreach (IPAddress address in adArray)
         {
