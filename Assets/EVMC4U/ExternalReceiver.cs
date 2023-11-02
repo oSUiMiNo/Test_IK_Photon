@@ -38,6 +38,7 @@ using UnityEngine.Events;
 using UnityEngine.Profiling;
 using VRM;
 using UniGLTF;
+using Photon.Pun;
 
 namespace EVMC4U
 {
@@ -416,6 +417,7 @@ namespace EVMC4U
             }
         }
 
+
         //デイジーチェーンを更新
         public void UpdateDaisyChain()
         {
@@ -537,9 +539,12 @@ namespace EVMC4U
 
         }
 
+        public uOSC.uOscClient uClient;
         //データ受信イベント
         private void OnDataReceived(uOSC.Message message)
         {
+            uClient.Send(message);
+
             //チェーン数0としてデイジーチェーンを発生させる
             MessageDaisyChain(ref message, 0);
         }
