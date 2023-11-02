@@ -52,7 +52,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
                 ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
             }
             else
-            {
+            {   
                 Debug.Log("マスターではない");
                 await UniTask.Delay(TimeSpan.FromSeconds(4));
                 Avatar = GameObject.Find("Avatar_IK(Clone)");
@@ -64,9 +64,9 @@ public class RoomGate : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                //Avatar = LoadNetWorkObject("Avatar_OSC", new Vector3(0, 0, 0), Quaternion.identity);
-                Avatar = (GameObject)Resources.Load("Avatar_OSC");
+                Avatar = Instantiate((GameObject)Resources.Load("Avatar_OSC"));
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
+                Debug.Log($"アバターこれ！ {Avatar}");
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
                 ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
@@ -75,8 +75,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
             {
                 Debug.Log("マスターではない");
                 await UniTask.Delay(TimeSpan.FromSeconds(4));
-                //Avatar = GameObject.Find("Avatar_OSC(Clone)");
-                Avatar = (GameObject)Resources.Load("Avatar_OSC");
+                Avatar = Instantiate((GameObject)Resources.Load("Avatar_OSC"));
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
