@@ -79,6 +79,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
                 Avatar = Instantiate((GameObject)Resources.Load("Avatar_OSC"));
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
+                ExternalReceiver.GetComponent<ExternalReceiver>().uClient = null;
                 Avatar.transform.parent = ExternalReceiver.transform;
                 ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
             }
