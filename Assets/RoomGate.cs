@@ -70,7 +70,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
                 ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
-                GameObject.Find("OSCSend").GetComponent<SampleBonesSend>().Model = Avatar;
+                GameObject.Find("OSCSender").GetComponent<SampleBonesSend>().Model = Avatar;
             }
             else
             {
