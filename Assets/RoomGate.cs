@@ -14,7 +14,7 @@ using EVMC4U;
 using UnityEditor.Animations;
 using Cysharp.Threading.Tasks;
 using System.Net;
-
+using uOSC;
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
@@ -70,8 +70,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
                 ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
-
-                //GameObject.Find("OSCSend").GetComponent<SampleBonesSend>().Model = Avatar;
+                GameObject.Find("OSCSend").GetComponent<SampleBonesSend>().Model = Avatar;
             }
             else
             {
@@ -98,11 +97,14 @@ public class RoomGate : MonoBehaviourPunCallbacks
     }
 
 
-
     [PunRPC]
-    private void ShareIP(string GlobalIP)
+    private void ShareIP(string IP)
     {
-        Debug.Log($"IP‚Í‚±‚ê {GlobalIP}");
+        Debug.Log($"IP‚Í‚±‚ê {IP}");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameObject.Find("OSCSend").GetComponent<uOscClient>().address = IP;
+        }
     }
 
 

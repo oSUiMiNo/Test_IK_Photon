@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 508186112544069069, guid: a39827deab840504e991ff40a8bca7b5, type: 3}
       propertyPath: m_Name
-      value: OSCSend
+      value: OSCSender
       objectReference: {fileID: 0}
     - target: {fileID: 1757445854362752253, guid: a39827deab840504e991ff40a8bca7b5, type: 3}
       propertyPath: m_LocalPosition.x
