@@ -13,15 +13,24 @@ using Unity.VisualScripting;
 using EVMC4U;
 using UnityEditor.Animations;
 using Cysharp.Threading.Tasks;
+using System.Net;
+
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
     [SerializeField, Label("“¯Šú•û–@")]
     public SynchronizeType synchronizeType;
 
+    string hostname = Dns.GetHostName();   
 
     private void Start()
     {
+        IPAddress[] adrList = Dns.GetHostAddresses(hostname);
+        foreach (IPAddress address in adrList)
+        {
+            Debug.Log(address.ToString());
+        }
+
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -112,6 +121,12 @@ public class RoomGate : MonoBehaviourPunCallbacks
         //obj.name = obj.name.Replace("(Clone)", "");
         return obj;
     }
+
+
+
+
+
+
 }
     
 public enum SynchronizeType

@@ -51,7 +51,7 @@ public class Multiplayer : MonoBehaviour
         IPEndPoint opponentEP = new IPEndPoint(IPAddress.Parse(IP), port);
         client.Send(message, message.Length, opponentEP);
         ackWaiting.Add(opponentEP);
-        print($"IP: {IP}:{port} に接続要求");
+        Debug.Log($"IP: {IP}:{port} に接続要求");
     }
     [ContextMenu("Register")]
     public void OnClickRegister()
@@ -86,7 +86,7 @@ public class Multiplayer : MonoBehaviour
         }
     }
     /// <summary>
-    /// 受信したメッセージの内容によって処理を行う
+    /// 受信したメッセージの内容によって処理を行う   
     /// </summary>
     /// <param name="unit">受信情報</param>
     void Parse(ReceivedUnit unit)
@@ -95,12 +95,12 @@ public class Multiplayer : MonoBehaviour
         UDPMessage type = unit.message.ToUDPMessage();
         int ackRegisteredIndex = ackWaiting.IndexOfPort(unit.senderEP.Port);
         int connectedIndex = connectedPlayerEPs.IndexOfPort(unit.senderEP.Port);
-        print("メッセージを受信");
+        Debug.Log("メッセージを受信");
         switch (type)
         {
             case UDPMessage.Ack:
                 {
-                    print(ackRegisteredIndex);
+                    Debug.Log(ackRegisteredIndex);
                     if (ackRegisteredIndex == -1) break;
                     connectedPlayerEPs.Add(unit.senderEP);
                     ackWaiting.RemoveAt(ackRegisteredIndex);
@@ -109,7 +109,7 @@ public class Multiplayer : MonoBehaviour
                         sendThread = new Thread(new ThreadStart(ThreadSend));
                         sendThread.Start();
                     }
-                    print("他の人から接続がありました");
+                    Debug.Log("他の人から接続がありました");
                     byte[] message = UDPMessage.AckComplete.ToByte();
                     client.SendAsync(message, message.Length, unit.senderEP);
                     otherPlayerObjects[connectedPlayerEPs.Count - 1].SetActive(true);
@@ -117,7 +117,7 @@ public class Multiplayer : MonoBehaviour
                 }
             case UDPMessage.AckComplete:
                 {
-                    print(ackRegisteredIndex);
+                    Debug.Log(ackRegisteredIndex);
                     if (ackRegisteredIndex == -1) break;
                     connectedPlayerEPs.Add(unit.senderEP);
                     ackWaiting.RemoveAt(ackRegisteredIndex);
@@ -126,7 +126,7 @@ public class Multiplayer : MonoBehaviour
                         sendThread = new Thread(new ThreadStart(ThreadSend));
                         sendThread.Start();
                     }
-                    print("他の人から接続がありました");
+                    Debug.Log("他の人から接続がありました");
                     otherPlayerObjects[connectedPlayerEPs.Count - 1].SetActive(true);
                     break;
                 }
@@ -149,7 +149,7 @@ public class Multiplayer : MonoBehaviour
                 }
             default:
                 {
-                    print("malformed packet!!!!!!!!!");
+                    Debug.Log("malformed packet!!!!!!!!!");
                     break;
                 }
         }
