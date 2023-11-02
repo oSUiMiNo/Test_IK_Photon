@@ -44,7 +44,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+                Avatar = LoadNetWorkObject("Avatar_IK", new Vector3(0, 0, 0), Quaternion.identity);
                 Destroy(Avatar.GetComponent<Test_IK>());
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
@@ -55,7 +55,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
             {
                 Debug.Log("マスターではない");
                 await UniTask.Delay(TimeSpan.FromSeconds(4));
-                Avatar = GameObject.Find("Avatar(Clone)");
+                Avatar = GameObject.Find("Avatar_IK(Clone)");
                 GameObject.Find("IKMarker").transform.parent = Avatar.transform;
                 Destroy(Avatar.GetComponent<MarkerController>());
             }
@@ -64,7 +64,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+                Avatar = LoadNetWorkObject("Avatar_OSC", new Vector3(0, 0, 0), Quaternion.identity);
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
@@ -74,6 +74,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
             {
                 Debug.Log("マスターではない");
                 await UniTask.Delay(TimeSpan.FromSeconds(4));
+                Avatar = GameObject.Find("Avatar_OSC(Clone)");
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
                 Avatar.transform.parent = ExternalReceiver.transform;
