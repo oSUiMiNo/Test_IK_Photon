@@ -16,6 +16,10 @@ using Cysharp.Threading.Tasks;
 
 public class RoomGate : MonoBehaviourPunCallbacks
 {
+    [SerializeField, Label("同期方法")]
+    public SynchronizeType synchronizeType;
+
+
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -36,22 +40,45 @@ public class RoomGate : MonoBehaviourPunCallbacks
     async UniTask InitAvatar()
     {
         GameObject Avatar = null;
-        if (PhotonNetwork.IsMasterClient)
+        if (synchronizeType == SynchronizeType.IK)
         {
-            Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
-            Destroy(Avatar.GetComponent<Test_IK>());
-            Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
-            GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
-            Avatar.transform.parent = ExternalReceiver.transform;
-            ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+                Destroy(Avatar.GetComponent<Test_IK>());
+                Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
+                GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
+                Avatar.transform.parent = ExternalReceiver.transform;
+                ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
+            }
+            else
+            {
+                Debug.Log("マスターではない");
+                await UniTask.Delay(TimeSpan.FromSeconds(4));
+                Avatar = GameObject.Find("Avatar(Clone)");
+                GameObject.Find("IKMarker").transform.parent = Avatar.transform;
+                Destroy(Avatar.GetComponent<MarkerController>());
+            }
         }
-        else
+        else 
         {
-            Debug.Log("マスターではない");
-            await UniTask.Delay(TimeSpan.FromSeconds(4));
-            Avatar = GameObject.Find("Avatar(Clone)");
-            GameObject.Find("IKMarker").transform.parent = Avatar.transform;
-            Destroy(Avatar.GetComponent<MarkerController>());
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Avatar = LoadNetWorkObject("Avatar", new Vector3(0, 0, 0), Quaternion.identity);
+                Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
+                GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
+                Avatar.transform.parent = ExternalReceiver.transform;
+                ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
+            }
+            else
+            {
+                Debug.Log("マスターではない");
+                await UniTask.Delay(TimeSpan.FromSeconds(4));
+                Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
+                GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
+                Avatar.transform.parent = ExternalReceiver.transform;
+                ExternalReceiver.GetComponent<ExternalReceiver>().Model = Avatar;
+            }
         }
     }
 
@@ -83,10 +110,8 @@ public class RoomGate : MonoBehaviourPunCallbacks
     }
 }
     
-public enum PhotonStates
+public enum SynchronizeType
 {
-    Default,
-    TryingConectingToMasterServer,
-    ConectedToMasterServer,
-    Ready
+    IK,
+    OSC
 }

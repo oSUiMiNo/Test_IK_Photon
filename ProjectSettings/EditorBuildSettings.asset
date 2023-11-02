@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Client.unity
+    path: Assets/Synchronize_byIK/IK_Client.unity
     guid: 10476366712c2524c99fbbcc3fce716b
   m_configObjects: {}
