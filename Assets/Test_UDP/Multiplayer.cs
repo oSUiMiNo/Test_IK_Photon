@@ -44,7 +44,7 @@ public class Multiplayer : MonoBehaviour
         receiveThread.Start();
     }
 
-    public void RegisterOpponentPort(string IP = "127.0.0.1", int port = 0)
+    public void RegisterOpponentPort(string IP = "14.187.242.101", int port = 0)
     {
         port = opponentPort;
         byte[] message = UDPMessage.Ack.ToByte();
