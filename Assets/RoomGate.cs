@@ -21,16 +21,8 @@ public class RoomGate : MonoBehaviourPunCallbacks
     [SerializeField, Label("“¯Šú•û–@")]
     public SynchronizeType synchronizeType;
 
-    string hostname = Dns.GetHostName();   
-
     private void Start()
     {
-        IPAddress[] adrList = Dns.GetHostAddresses(hostname);
-        foreach (IPAddress address in adrList)
-        {
-            Debug.Log(address.ToString());
-        }
-
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -38,7 +30,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions(), TypedLobby.Default);
     }
-
 
 
     public override async void OnJoinedRoom()
@@ -95,8 +86,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
         }
     }
 
-    
-
 
     public async override void OnPlayerEnteredRoom(Player newPlayer)
     {
@@ -104,8 +93,10 @@ public class RoomGate : MonoBehaviourPunCallbacks
         await UniTask.Delay(TimeSpan.FromSeconds(4));
         //string IP = await GetGlobalIP.UseAPI();
         //Debug.Log(IP);
-        photonView.RPC(nameof(ShareIP), RpcTarget.AllBuffered, await GetGlobalIP.UseAPI());
+        Dictionary<string, string> IPs = await GetGlobalIP.LocalIP();
+        photonView.RPC(nameof(ShareIP), RpcTarget.AllBuffered, IPs["IP4"]);
     }
+
 
 
     [PunRPC]
@@ -121,12 +112,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
         //obj.name = obj.name.Replace("(Clone)", "");
         return obj;
     }
-
-
-
-
-
-
 }
     
 public enum SynchronizeType

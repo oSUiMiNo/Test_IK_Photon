@@ -1,5 +1,4 @@
 using System.IO;
-using System.Diagnostics;
 using UnityEngine;
 using System.Net;
 using System.Text;
@@ -9,15 +8,36 @@ using System.Xml.Linq;
 using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
+using System.Collections.Generic;
 
 public class GetGlobalIP : MonoBehaviourPunCallbacks
 {
     private async void Start()
     {
-        await UseAPI();
+        //await GlobalIP();
+        await LocalIP();
     }
 
-    public static async UniTask<string> UseAPI()
+    public static async UniTask<Dictionary<string, string>> LocalIP()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(0.3));
+
+        string hostname = Dns.GetHostName();
+
+        IPAddress[] adArray = Dns.GetHostAddresses(hostname);
+        Dictionary<string, string> adDict = new Dictionary<string, string>();
+
+        adDict.Add("IP6", adArray[1].ToString());
+        adDict.Add("IP4", adArray[2].ToString());
+        
+        foreach (IPAddress address in adArray)
+        {
+            //Debug.Log($"IPアドレス  {address.ToString()}");
+        }
+        return adDict;
+    }
+
+    public static async UniTask<string> GlobalIP()
     {
         string responseText = "なし";
 
@@ -33,23 +53,23 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
             }
             catch
             {
-                UnityEngine.Debug.Log("キャッチ");
+                Debug.Log("キャッチ");
             }
 
             if (request.result == UnityWebRequest.Result.ConnectionError ||
                         request.result == UnityWebRequest.Result.ProtocolError)
             {
-                UnityEngine.Debug.Log("エラー");
-                UnityEngine.Debug.LogError(request.error);
+                Debug.Log("エラー");
+                Debug.LogError(request.error);
                 if (request.error == "HTTP/1.1 429 Too Many Requests")
                 {
-                    UnityEngine.Debug.Log("リクエスト多すぎ");
+                    Debug.Log("リクエスト多すぎ");
                     await UniTask.Delay(TimeSpan.FromSeconds(1f));
-                    await UseAPI();
+                    await GlobalIP();
                 }
-                UnityEngine.Debug.Log("1-UseAPI");
+                Debug.Log("1-UseAPI");
                 request.Dispose();
-                UnityEngine.Debug.Log("2-UseAPI");
+                Debug.Log("2-UseAPI");
                 
                 //throw new Exception();
             }
@@ -57,7 +77,7 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
             {
                 responseText = request.downloadHandler.text;
                 request.Dispose();
-                UnityEngine.Debug.Log($"IPアドレス分かった！　{responseText}");
+                Debug.Log($"IPアドレス分かった！　{responseText}");
             }
             return responseText;
         };
