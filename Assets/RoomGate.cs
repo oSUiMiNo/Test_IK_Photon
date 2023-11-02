@@ -103,7 +103,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         Debug.Log($"IP‚Í‚±‚ê {IP}");
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject.Find("OSCSend").GetComponent<uOscClient>().address = IP;
+            GameObject.Find("OSCSender").GetComponent<uOscClient>().address = IP;
         }
     }
 
