@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152740518}
-  - component: {fileID: 152740517}
   - component: {fileID: 152740516}
   - component: {fileID: 152740515}
   - component: {fileID: 152740514}
@@ -214,23 +213,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152740513}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &152740517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152740513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13ffc551dd93124dac6b715fdbd9205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPort: 10
-  opponentPort: 11
-  enableSmoothing: 0
-  player: {fileID: 0}
-  otherPlayerObjects: []
 --- !u!4 &152740518
 Transform:
   m_ObjectHideFlags: 0
