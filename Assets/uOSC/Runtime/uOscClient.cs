@@ -9,7 +9,7 @@ namespace uOSC
 public class uOscClient : MonoBehaviour
 {
     [SerializeField]
-    public string address = "127.0.0.1";
+    public string address;
 
     [SerializeField]
     public int port = 3333;

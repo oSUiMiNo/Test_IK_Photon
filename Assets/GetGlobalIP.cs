@@ -28,11 +28,11 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
         Dictionary<string, string> adDict = new Dictionary<string, string>();
 
         adDict.Add("IP6", adArray[0].ToString());
-        adDict.Add("IP4", adArray[1].ToString());
+        adDict.Add("IP4", adArray[3].ToString());
         
         foreach (IPAddress address in adArray)
         {
-            //Debug.Log($"IPアドレス  {address.ToString()}");
+            Debug.Log($"IPアドレス  {address.ToString()}");
         }
         return adDict;
     }

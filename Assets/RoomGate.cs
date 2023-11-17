@@ -91,6 +91,10 @@ public class RoomGate : MonoBehaviourPunCallbacks
         Debug.Log("’N‚©“ü‚Á‚Ä‚«‚½");
         await UniTask.Delay(TimeSpan.FromSeconds(4));
         Dictionary<string, string> IPs = await GetGlobalIP.LocalIP();
+
+        Debug.Log($"1========================");
+        Debug.Log($"IP6 ‚Í {IPs["IP6"]}");
+        Debug.Log($"IP4 ‚Í {IPs["IP4"]}");
         photonView.RPC(nameof(ShareIP), RpcTarget.AllBuffered, IPs["IP4"]);
     }
 
@@ -101,7 +105,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         Debug.Log($"IP‚Í‚±‚ê {IP}");
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject.Find("OSCSender").GetComponent<uOscClient>().address = "127.0.0.1";
+            GameObject.Find("OSCSender").GetComponent<uOscClient>().address = "192.168.0.11";
         }
     }
 
