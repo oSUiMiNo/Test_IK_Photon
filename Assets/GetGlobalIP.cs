@@ -82,5 +82,4 @@ public class GetGlobalIP : MonoBehaviourPunCallbacks
             return responseText;
         };
     }
-
 }

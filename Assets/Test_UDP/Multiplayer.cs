@@ -81,8 +81,8 @@ public class Multiplayer : MonoBehaviour
         while (true)
         {
             //OnUpdateSend();
-            isSendTiming = true;
-            Thread.Sleep(1000 / sendPerSecond);
+            isSendTiming = true;　//スレッドを一定時間スリープすることで定期的スレッドが目覚めて、isSendTiming が true になる。
+            Thread.Sleep(1000 / sendPerSecond); //1秒間は1000ミリ秒
         }
     }
     /// <summary>
@@ -182,8 +182,9 @@ public class Multiplayer : MonoBehaviour
         }
 
         //受信メッセージがある場合
-        for (int i = 0; i < messageStack.Count; i++)
+        for (int i = 0; i < messageStack.Count; i++)　
         {
+            //ここで、受取ったメッセージスタックの最後までまわして1フレームでParse()内で最新情報まで更新するのが、かくつきの原因。
             Parse(messageStack[i]);
             messageStack.RemoveAt(i);
             i--;
@@ -252,7 +253,7 @@ public class Multiplayer : MonoBehaviour
     /// <summary>
     /// 受信する間の位置・回転を補完するためのクラス
     /// 例えば同期レートが1秒に15回の場合60fpsでは4フレームの間止まって瞬間移動を繰り返すように見える。
-    /// したがって同期レートの2つの値を4分割すると4フレームの間も移動しているように見せることができる。
+    /// したがって同期レートの2つの値の間を4分割すると4フレームの間も移動しているように見せることができる。
     /// </summary>
     class PositionAndRotation
     {
@@ -342,8 +343,6 @@ public class Multiplayer : MonoBehaviour
             return new Vector3(x, y, z);
         }
     }
-
-
 }
 
 

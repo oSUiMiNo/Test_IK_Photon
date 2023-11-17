@@ -75,7 +75,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
             else
             {
                 Debug.Log("マスターではない");
-                await UniTask.Delay(TimeSpan.FromSeconds(4));
                 Avatar = Instantiate((GameObject)Resources.Load("Avatar_OSC"));
                 Avatar.GetComponent<Animator>().runtimeAnimatorController = null;
                 GameObject ExternalReceiver = GameObject.Find("ExternalReceiver");
@@ -91,8 +90,6 @@ public class RoomGate : MonoBehaviourPunCallbacks
     {
         Debug.Log("誰か入ってきた");
         await UniTask.Delay(TimeSpan.FromSeconds(4));
-        //string IP = await GetGlobalIP.UseAPI();
-        //Debug.Log(IP);
         Dictionary<string, string> IPs = await GetGlobalIP.LocalIP();
         photonView.RPC(nameof(ShareIP), RpcTarget.AllBuffered, IPs["IP4"]);
     }
@@ -104,7 +101,7 @@ public class RoomGate : MonoBehaviourPunCallbacks
         Debug.Log($"IPはこれ {IP}");
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject.Find("OSCSender").GetComponent<uOscClient>().address = IP;
+            GameObject.Find("OSCSender").GetComponent<uOscClient>().address = "127.0.0.1";
         }
     }
 
