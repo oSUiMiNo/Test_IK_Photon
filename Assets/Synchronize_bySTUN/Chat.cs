@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 using LumiSoft.Net.STUN.Client;
 
@@ -16,7 +17,7 @@ public class Chat : MonoBehaviour
     private IPEndPoint MyIPEndPoint;
 
     [SerializeField]
-    private Text ChatLog;
+    private TextMeshProUGUI ChatLog;
     [SerializeField]
     private Button ButtonEnterChat;
     [SerializeField]
@@ -29,7 +30,7 @@ public class Chat : MonoBehaviour
     private Button ButtonEnterAddress;
 
     [SerializeField]
-    private Text MyEndPoint;
+    private TextMeshProUGUI MyEndPoint;
 
     private UdpClient UdpClient;
 
@@ -50,6 +51,8 @@ public class Chat : MonoBehaviour
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
                 MyIPEndPoint = endPoint;
                 MyIPEndPoint.Port = BindPort;
+
+                Debug.Log(MyIPEndPoint);
             }
         }
 
