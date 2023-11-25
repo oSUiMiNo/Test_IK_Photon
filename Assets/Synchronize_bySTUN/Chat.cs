@@ -21,11 +21,11 @@ public class Chat : MonoBehaviour
     [SerializeField]
     private Button ButtonEnterChat;
     [SerializeField]
-    private InputField InputChat;
+    private TMP_InputField InputChat;
     [SerializeField]
-    private InputField InputAddress;
+    private TMP_InputField InputAddress;
     [SerializeField]
-    private InputField InputPort;
+    private TMP_InputField InputPort;
     [SerializeField]
     private Button ButtonEnterAddress;
 
