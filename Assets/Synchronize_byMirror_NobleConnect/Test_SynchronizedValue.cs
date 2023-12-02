@@ -62,7 +62,7 @@ public class Test_SynchronizedValue : MonoBehaviour
         }
 
 
-        MyEndPoint.text = MyIPEndPoint.ToString();
+        //MyEndPoint.text = MyIPEndPoint.ToString();
 
         ButtonEnterAddress.onClick.AddListener(Connect);
         ButtonEnterChat.onClick.AddListener(Send);
