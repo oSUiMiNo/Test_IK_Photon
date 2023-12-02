@@ -58,7 +58,7 @@ public class Test_SynchronizedValue : MonoBehaviour
 
         if (isGlobal)
         {
-            STUN(UdpClient);
+            //STUN(UdpClient);
         }
 
 
