@@ -1384,7 +1384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1009475964}
-  - component: {fileID: 1009475963}
+  - component: {fileID: 1009475965}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -1392,27 +1392,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1009475963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009475962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdac24737ccd825468ea7b44c1c7c0af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BindPort: 10000
-  isStun: 1
-  ChatLog: {fileID: 2104110890}
-  ButtonEnterChat: {fileID: 2076249632}
-  InputChat: {fileID: 981735883}
-  InputAddress: {fileID: 95083860}
-  InputPort: {fileID: 369738955}
-  ButtonEnterAddress: {fileID: 1460480979}
-  MyEndPoint: {fileID: 1401599637}
 --- !u!4 &1009475964
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,6 +1407,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1009475965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009475962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4e8c6fe6c20bf4cb86f775c1e1813b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindPort: 10000
+  isGlobal: 0
+  ChatLog: {fileID: 2104110890}
+  ButtonEnterChat: {fileID: 2076249632}
+  InputChat: {fileID: 981735883}
+  InputAddress: {fileID: 95083860}
+  InputPort: {fileID: 369738955}
+  ButtonEnterAddress: {fileID: 1460480979}
+  MyEndPoint: {fileID: 1401599637}
 --- !u!1 &1268711380
 GameObject:
   m_ObjectHideFlags: 0
