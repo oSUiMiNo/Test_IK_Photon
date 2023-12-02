@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BindPort: 10000
-  isGlobal: 0
+  isGlobal: 1
   ChatLog: {fileID: 2104110890}
   ButtonEnterChat: {fileID: 2076249632}
   InputChat: {fileID: 981735883}
