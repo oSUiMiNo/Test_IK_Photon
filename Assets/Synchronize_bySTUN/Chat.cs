@@ -73,7 +73,7 @@ public class Chat : MonoBehaviour
     {
         // Query STUN server
         //GoogleのSTUNサーバーから自分のグローバルIPアドレスとNAPTで変換されたポートを取得する
-        STUN_Result result = STUN_Client.Query("stun.l.google.com", 19302, client.Client);
+        STUN_Result result = STUN_Client.Query("stun2.l.google.com", 19302, client.Client);
         //もし自分のネット環境がUDPをブロックする場合
         if (result.NetType == STUN_NetType.UdpBlocked)
         {
