@@ -282,8 +282,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 1009475964}
   - component: {fileID: 1009475965}
   m_Layer: 0
-  m_Name: Chat
+  m_Name: Test_SynchronizedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BindPort: 10000
-  isGlobal: 1
+  isGlobal: 0
   ChatLog: {fileID: 2104110890}
   ButtonEnterChat: {fileID: 2076249632}
   InputChat: {fileID: 981735883}
@@ -1953,8 +1953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2428,8 +2428,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
