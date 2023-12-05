@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4e8c6fe6c20bf4cb86f775c1e1813b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BindPort: 10000
+  BindPort: 20000
   isGlobal: 0
   ChatLog: {fileID: 2104110890}
   ButtonEnterChat: {fileID: 2076249632}
@@ -2897,8 +2897,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1812, y: 34}
-  m_SizeDelta: {x: 1200, y: 1500}
+  m_AnchoredPosition: {x: 621, y: -8}
+  m_SizeDelta: {x: 600, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104110890
 MonoBehaviour:
@@ -2947,8 +2947,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
