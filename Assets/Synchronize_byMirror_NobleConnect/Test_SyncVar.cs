@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 public class Test_SyncVar : NetworkBehaviour
 {
     [SyncVar]
-    [SerializeField]
     float value = 0;
 
     [SerializeField]
@@ -31,6 +31,15 @@ public class Test_SyncVar : NetworkBehaviour
     }
 
     void Update()
+    {
+        if (isLocalPlayer)
+        {
+            A();
+        }
+    }
+
+    [Command]
+    void A()
     {
         value = slider.value;
         textMeshProUGUI.text = value.ToString();
