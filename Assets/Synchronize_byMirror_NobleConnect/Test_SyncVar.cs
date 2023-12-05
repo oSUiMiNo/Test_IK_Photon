@@ -34,14 +34,15 @@ public class Test_SyncVar : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            Debug.Log("ローカルプレイヤー");
             A();
         }
+        textMeshProUGUI.text = value.ToString();
     }
 
     [Command]
     void A()
     {
         value = slider.value;
-        textMeshProUGUI.text = value.ToString();
     }
 }
