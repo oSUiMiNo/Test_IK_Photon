@@ -1419,8 +1419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4e8c6fe6c20bf4cb86f775c1e1813b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BindPort: 20000
-  isGlobal: 0
+  BindPort: 10000
+  isGlobal: 1
   ChatLog: {fileID: 2104110890}
   ButtonEnterChat: {fileID: 2076249632}
   InputChat: {fileID: 981735883}
@@ -1428,6 +1428,7 @@ MonoBehaviour:
   InputPort: {fileID: 369738955}
   ButtonEnterAddress: {fileID: 1460480979}
   MyEndPoint: {fileID: 1401599637}
+  isConnect: 0
 --- !u!1 &1268711380
 GameObject:
   m_ObjectHideFlags: 0

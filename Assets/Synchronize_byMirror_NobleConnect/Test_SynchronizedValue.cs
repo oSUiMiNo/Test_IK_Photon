@@ -36,6 +36,7 @@ public class Test_SynchronizedValue : MonoBehaviour
 
     private IPEndPoint ConnectIPEndPoint = new IPEndPoint(0, 0);
 
+    [SerializeField]
     private bool isConnect;
 
     private async void Start()
@@ -53,6 +54,7 @@ public class Test_SynchronizedValue : MonoBehaviour
                 MyIPEndPoint.Port = BindPort;
 
                 Debug.Log(MyIPEndPoint);
+                MyEndPoint.text = MyIPEndPoint.ToString();
             }
         }
 
@@ -61,8 +63,6 @@ public class Test_SynchronizedValue : MonoBehaviour
             //STUN(UdpClient);
         }
 
-
-        MyEndPoint.text = MyIPEndPoint.ToString();
 
         ButtonEnterAddress.onClick.AddListener(Connect);
         ButtonEnterChat.onClick.AddListener(Send);
