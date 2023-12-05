@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Test_SyncVar : NetworkBehaviour
 {
@@ -13,8 +14,11 @@ public class Test_SyncVar : NetworkBehaviour
     [SerializeField]
     Slider slider;
 
+    TextMeshProUGUI textMeshProUGUI;
+
     void Awake()
     {
+        textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         slider = GameObject.Find("Slider").GetComponent<Slider>();
         Debug.Log($"{slider.value}--------------------");
         transform.position = new Vector3(788, 181, 0);
@@ -29,5 +33,6 @@ public class Test_SyncVar : NetworkBehaviour
     void Update()
     {
         value = slider.value;
+        textMeshProUGUI.text = value.ToString();
     }
 }
