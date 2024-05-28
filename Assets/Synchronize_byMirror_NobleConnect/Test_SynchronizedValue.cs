@@ -41,12 +41,11 @@ public class Test_SynchronizedValue : MonoBehaviour
 
     private async void Start()
     {
-        UdpClient = new UdpClient(BindPort);
+        //UdpClient = new UdpClient(BindPort);
 
         if (!isGlobal)
         {
-
-            Debug.Log("aaaaa");
+            Debug.Log("Is Local");
             //Private IP ‚ğæ‚éè’i@‚à‚¤‚¿‚å‚¢‚¢‚¢•û–@‹‚Ş
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.IPv6HopByHopOptions))
             {
