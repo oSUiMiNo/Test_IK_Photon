@@ -11,7 +11,7 @@ using LumiSoft.Net.STUN.Client;
 
 public class Test_SynchronizedValue : MonoBehaviour
 {
-    public int BindPort = 10000;
+    public int BindPort = 60570;
     public bool isGlobal;
 
     private IPEndPoint MyIPEndPoint;
