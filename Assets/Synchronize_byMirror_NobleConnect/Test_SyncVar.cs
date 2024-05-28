@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 
 public class Test_SyncVar : NetworkBehaviour
 {
-    [SyncVar]
+    [SyncVar][SerializeField]
     float value = 0;
 
     [SerializeField]
@@ -35,14 +35,15 @@ public class Test_SyncVar : NetworkBehaviour
         if (isLocalPlayer)
         {
             //Debug.Log("ローカルプレイヤー");
-            A();
         }
+        A();
         textMeshProUGUI.text = value.ToString();
     }
 
     [Command]
     void A()
     {
+        Debug.Log("値をアプライ");
         value = slider.value;
     }
 }
