@@ -34,7 +34,7 @@ public class Test_SyncVar : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            Debug.Log("ローカルプレイヤー");
+            //Debug.Log("ローカルプレイヤー");
             A();
         }
         textMeshProUGUI.text = value.ToString();
