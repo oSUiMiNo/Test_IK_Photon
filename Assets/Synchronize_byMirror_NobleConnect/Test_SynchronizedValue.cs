@@ -41,7 +41,7 @@ public class Test_SynchronizedValue : MonoBehaviour
 
     private async void Start()
     {
-        //UdpClient = new UdpClient(BindPort);
+        UdpClient = new UdpClient(BindPort);
 
         if (!isGlobal)
         {
