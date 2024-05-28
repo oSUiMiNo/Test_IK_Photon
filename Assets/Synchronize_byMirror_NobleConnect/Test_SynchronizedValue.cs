@@ -45,6 +45,8 @@ public class Test_SynchronizedValue : MonoBehaviour
 
         if (!isGlobal)
         {
+
+            Debug.Log("aaaaa");
             //Private IP ‚ğæ‚éè’i@‚à‚¤‚¿‚å‚¢‚¢‚¢•û–@‹‚Ş
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.IPv6HopByHopOptions))
             {
