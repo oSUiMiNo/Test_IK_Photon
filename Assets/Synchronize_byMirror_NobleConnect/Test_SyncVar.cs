@@ -23,27 +23,25 @@ public class Test_SyncVar : NetworkBehaviour
         Debug.Log($"{slider.value}--------------------");
         transform.position = new Vector3(788, 181, 0);
         transform.parent = slider.gameObject.transform;
+        if (isLocalPlayer) Debug.Log("ローカルプレイヤー");
     }
+
 
     void Start()
     {
     
     }
 
+
     void Update()
     {
-        if (isLocalPlayer)
-        {
-            Debug.Log("ローカルプレイヤー");
-            A();
-        }
+        if (isLocalPlayer) A();
         textMeshProUGUI.text = value.ToString();
     }
 
     [Command]
     void A()
     {
-        Debug.Log("値をアプライ");
         value = slider.value;
     }
 }
